@@ -1,0 +1,21 @@
+name: Go
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 12 * * 1"
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go 1.16
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.16
+
+      - name: Test
+        run: go test -v
